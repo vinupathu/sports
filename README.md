@@ -1,6 +1,23 @@
 # Sports
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+Angular version 6.1.0.
+Node version 8.12.0.
+
+# Installation
+
+Step 1:
+
+    Clone Project into new folder
+
+Step 2: Install Dependency
+
+    npm install 
+    
+Step 3: Login Credentials
+
+    Admin : Username='admin', Password='admin123'
+    User : Username='vinay', Password='vinay123'
 
 ## Development server
 
