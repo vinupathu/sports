@@ -1,0 +1,27 @@
+<div class="container-fluid bg-primary text-light">
+  <nav class="row navbar navbar-expand-sm navbar-light">
+      <div class="navbar-nav col-9">
+          <h2><a class="navbar-brand text-light" href="#">Cricket</a></h2>
+      </div>
+      <div class="navbar-nav col-3">
+          <div class="logged">Welcome <b>{{userName}}({{userRole}})</b>
+              <a class="logOut ml-1 text-light" [routerLink]="['']">Logout</a>
+          </div>
+      </div>
+  </nav>
+</div>
+
+<div class="alert alert-danger" *ngIf="errorMsg">
+  <strong>{{this.errorMsg}}.</strong>
+</div>
+
+<div class="container pt-5">  
+  <div class="row">
+          <div class="col-4">
+              <app-list-players [globalUserRole] = "userRole"></app-list-players>
+          </div>
+          <div class="col-8">
+              <app-player-details [globalUserRole] = "userRole"></app-player-details>
+          </div>
+  </div>
+</div>

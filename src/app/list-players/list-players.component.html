@@ -1,0 +1,42 @@
+<b class="alert-success">{{submittedSuccess}} </b>
+<b class="alert-danger">{{submittedFailure}} </b>
+<!-- Nav tabs -->
+<div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#categoryContainer" (click)="groupPlayers('country')">Country</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#categoryContainer" (click)="groupPlayers('role')">Player Role</a>
+    </li>
+  </ul>
+</div>
+<div class="tab-content">
+    <div class="tab-pane active" id="categoryContainer">
+      <div id="scroller" ngxInfiniteScroller strategy="scrollingToBoth" (onScrollDown)="onScrollDown()">
+        <div class="card" *ngFor="let category of categories; index as i">
+          <div class="card-header">
+            <a class="card-link">
+                {{category}}
+            </a>
+          </div>
+          <div>
+            <div class="card-body">
+              <ul>
+                <li *ngFor="let player of players[i]">
+                  <a (contextmenu)="onrightClick($event,player._id['$oid'])" routerLink="/home/{{player._id['$oid']}}">{{player.name}}</a>  
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div (click)="disableContextMenu()" oncontextmenu="return false;">
+  <div *ngIf="contextmenu==true">
+    <div class="contextmenu btn btn-primary" [ngStyle]="{'left.px': contextmenuX, 'top.px': contextmenuY}">
+        <a (click)="deletePlayer(deleteId)">Delete</a>
+    </div>
+  </div>
+</div>

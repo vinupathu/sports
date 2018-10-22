@@ -1,0 +1,9 @@
+<div class="alert alert-danger" *ngIf="errorMsg">
+    <strong>{{this.errorMsg}}.</strong>
+</div>
+<div>
+    <button class="mx-auto d-block btn btn-primary" (click)="openCloseDock();" type="button">Dock/Undock</button>
+</div>
+<div>
+    <img class="mx-auto d-block" src="{{player?.photo}}" [ngStyle]="photoStyle" />
+</div>

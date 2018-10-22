@@ -1,0 +1,66 @@
+<div *ngIf="showPlayerDetails">
+  <div class="row">
+    <div class="col-6">
+        <app-player-picture></app-player-picture>
+    </div>
+    <div class="col-6">
+      <div *ngIf="hideloadedform">
+          <div>
+              <h2>Player Details</h2>
+              <b class="alert-success">{{submittedSuccess}} </b>
+              <b class="alert-danger">{{submittedFailure}} </b>
+              <form class="form-horizontal" novalidate (ngSubmit)="updatePlayer(playerForm.value)" [formGroup]="playerForm">
+
+                  <div class="form-group">
+                      <label>Name:</label>
+                      <input class="form-control" type="text" placeholder="Name is required" [readonly]="isReadOnly" (dblclick)="edit();" [(ngModel)]="player.name"
+                          formControlName="name" [value]="player.name" />
+                  </div>
+                  <div class="form-group">
+                      <label>Country:</label>
+                      <input class="form-control" type="text" placeholder="Country is required" [readonly]="isReadOnly" (dblclick)="edit();" [(ngModel)]="player.country"
+                          formControlName="country" [value]="player.country" />
+                  </div>
+                  <div class="form-group">
+                      <label>Role:</label>
+                      <input class="form-control" type="text" placeholder="Role is required" [readonly]="isReadOnly" (dblclick)="edit();" [(ngModel)]="player.role"
+                          formControlName="role" [value]="player.role" />
+                      <input class="form-control" type="hidden"  [(ngModel)]="player.photo" formControlName="photo" [value]="player.photo"
+                      />
+                  </div>
+                  <button *ngIf="isAdmin" class="btn btn-primary mr-4" type="submit" [disabled]='!playerForm.valid'>Save</button>
+                  <button *ngIf="isAdmin" class="btn btn-primary" (click)="addnewplayer();" type="button">Add New Player</button>
+              </form>
+          </div>
+      </div>
+      <div *ngIf="!hideloadedform">
+          <div>
+              <h2>Add New Player</h2>
+              <b class="success">{{submittedSuccess}} </b>
+              <b class="alert-danger">{{submittedFailure}} </b>
+              <form class="form-horizontal" novalidate (ngSubmit)="addPlayer(playerForm1.value)" [formGroup]="playerForm1">
+
+                  <div class="form-group">
+                      <label>Name</label>
+                      <input class="form-control" type="text" placeholder="Name is required" formControlName="name" />
+                  </div>
+                  <div class="form-group">
+                      <label>Country</label>
+                      <input class="form-control" type="text" placeholder="Country is required" formControlName="country" />
+                  </div>
+                  <div class="form-group">
+                      <label>Role</label>
+                      <input class="form-control" type="text" placeholder="Role is required" formControlName="role" />
+                  </div>
+                  <div class="form-group">
+                      <input class="form-control" type="hidden" formControlName="photo" />
+                  </div>
+
+                  <button class="btn btn-primary mr-4" type="submit" [disabled]='!playerForm1.valid'>Save</button>
+                  <button class="btn btn-primary" (click)="addnewplayer();" type="button">Back</button>
+              </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
